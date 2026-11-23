@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Were the Ancient Britons?</title>
+<meta name="description" content="Watch 8,000 years of arrivals change Britain’s gene pool, one boatload at a time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gsharpokie.github.io/ancientbritons/">
+<meta property="og:title" content="Who Were the Ancient Britons?">
+<meta property="og:description" content="About 10,000 years ago, Britain was home to hunter-gatherers. Then the boats started coming. Watch 8,000 years of arrivals reshape the island’s gene pool.">
+<meta property="og:image" content="https://gsharpokie.github.io/ancientbritons/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Who Were the Ancient Britons? A gene pool of 100 tiles in Britain as the first boats cross the sea from the continent.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@gsharpokie">
+<meta name="twitter:title" content="Who Were the Ancient Britons?">
+<meta name="twitter:description" content="Then the boats started coming. Watch 8,000 years of arrivals reshape Britain’s gene pool.">
+<meta name="twitter:image" content="https://gsharpokie.github.io/ancientbritons/preview.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a2620'/%3E%3Ccircle cx='16' cy='9' r='4' fill='%23e8b26a'/%3E%3Cpath d='M16 14 L24 27 H8 Z' fill='%23e8b26a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* Layout: a prediction, then the stage: a gene pool of 100 tiles (each = 1% of Britain's ancestry) that changes as
+   newcomers cross from the continent in boats, with a caption, a running tally, and four gene-variant bars beside it
+   (below it on narrow screens). Then what this can't show, things to ponder, and sources. */
+:root {
+  --paper: #f4f2ec; --surface: #ffffff; --ink: #2a2620; --muted: #645e54; --line: #ddd7cc;
+  --sea: #dbe6ea; --land: #fbf9f4; --coast: #b9b2a5; --boat: #6b6459; --grid: #e7e2d8;
+  --w0: #0f8a5f; --w1: #c08400; --w2: #2a78d6; --w3: #b13fb0;
+  --good: #1f6f69; --focus: #b5541c; --bar: #57514a;
+  --display: "Libre Franklin", "Segoe UI", system-ui, sans-serif;
+  --body: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141210; --surface: #1d1a17; --ink: #eee9e0; --muted: #b0a89b; --line: #3a352f;
+    --sea: #172126; --land: #302b24; --coast: #6a6256; --boat: #a79f92; --grid: #2f2a25;
+    --w0: #199e70; --w1: #c98500; --w2: #3987e5; --w3: #c050be;
+    --good: #5fc2b8; --focus: #f0935a; --bar: #bdb5a8; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.05rem; line-height: 1.55; }
+.wrap { max-width: 42rem; margin: 0 auto; padding: 2rem 1rem 3rem; display: grid; gap: 1.6rem; }
+.wrap-main { display: grid; gap: inherit; min-width: 0; }
+header { display: grid; gap: .45rem; }
+.kicker { font-size: .85rem; color: var(--muted); }
+.kicker a, footer a, .notes a, .prose a { color: var(--ink); }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(2.2rem, 8vw, 3.4rem); line-height: 1; margin: 0; letter-spacing: -.02em; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; line-height: 1.25; margin: 0; }
+.lede { margin: 0; max-width: 60ch; color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem; display: grid; gap: 1rem; min-width: 0; }
+@media (max-width: 420px) { .card { padding: 1.1rem; } }
+.q { font-size: 1.15rem; font-weight: 600; margin: 0; text-wrap: balance; }
+.sub { margin: 0; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+.then { margin: 0; padding: .7rem .9rem; border-left: 4px solid var(--good); background: var(--paper); border-radius: 0 8px 8px 0; max-width: 62ch; }
+.choices { display: grid; gap: .45rem; }
+.choices button { font: inherit; text-align: left; padding: .6rem .9rem; border-radius: 10px; border: 1px solid var(--muted); background: transparent; color: var(--ink); cursor: pointer; }
+.choices button[aria-pressed="true"] { border: 2px solid var(--ink); font-weight: 600; }
+.choices button:disabled { cursor: default; }
+.primary { font: inherit; font-weight: 600; padding: .65rem 1.2rem; border-radius: 10px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; }
+.primary:disabled { opacity: .45; cursor: default; }
+.step { font: inherit; font-weight: 600; font-size: .95rem; padding: .6rem .9rem; border-radius: 10px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.step:disabled { opacity: .4; cursor: default; }
+.step[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.linkish { font: inherit; font-size: .9rem; background: none; border: none; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; }
+@media (max-width: 420px) { .row { gap: .5rem .6rem; } .row .primary, .row .step { padding: .55rem .7rem; font-size: .92rem; } }
+button:focus-visible, input:focus-visible, a:focus-visible, summary:focus-visible, .tablewrap:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* crowd */
+.stagehead { display: grid; gap: .15rem; }
+.when { font-size: .85rem; color: var(--muted); font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+.scene { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--sea); max-width: 30rem; width: 100%; align-self: center; order: 1; }
+/* The stage: on narrow screens one column (scene, text, tally, bars) with the buttons pinned to the bottom of the
+   screen; on wide screens the scene and buttons sit on the left and stay put while the text column scrolls. */
+header, footer, .wrap-main > :not(#crowd) { max-width: 42rem; width: 100%; justify-self: center; }
+.stage { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.col-left { display: contents; }
+.col-right { display: contents; }
+.capwrap { order: 2; position: relative; min-width: 0; }
+.term { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.term .i { font-size: .8em; margin-left: .15em; text-decoration: none; display: inline-block; }
+.pop { position: absolute; left: 0; top: calc(100% + .3rem); z-index: 4; width: min(100%, 26rem); background: var(--surface); color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; padding: .8rem; box-shadow: 0 8px 24px rgba(0,0,0,.22); display: grid; gap: .55rem; font-size: .92rem; }
+.pop p { margin: 0; }
+.pop a { color: var(--ink); }
+.pop .credit { font-size: .8rem; color: var(--muted); }
+.popimgs { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; align-items: end; padding-right: 1.6rem; }
+.popimgs figure { margin: 0; display: grid; gap: .25rem; }
+.popimgs img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--line); }
+.popimgs figcaption { font-size: .8rem; color: var(--muted); line-height: 1.3; }
+.popclose { position: absolute; top: .3rem; right: .3rem; width: 1.9rem; height: 1.9rem; font: inherit; font-size: 1.25rem; line-height: 1; border: 0; border-radius: 6px; background: transparent; color: var(--ink); cursor: pointer; }
+.tallybox { order: 3; display: grid; gap: .5rem; min-width: 0; }
+.dna { order: 4; display: grid; gap: .8rem; min-width: 0; }
+.controls { order: 5; position: sticky; bottom: 0; z-index: 5; background: var(--surface); margin: 0 -1.4rem; padding: .7rem 1.4rem; border-top: 1px solid var(--line); }
+@media (max-width: 420px) { .controls { margin: 0 -1.1rem; padding: .6rem 1.1rem; } }
+@media (max-width: 879px) { html { scroll-padding-bottom: 5rem; } }
+@media (min-width: 880px) {
+  .wrap { max-width: 60rem; }
+  .stage { display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); gap: 1.8rem; align-items: start; }
+  .col-left { display: grid; gap: 1rem; position: sticky; top: 1rem; }
+  .col-right { display: grid; gap: 1.2rem; min-width: 0; }
+  .controls { order: 2; position: static; margin: 0; padding: 0; border: 0; }
+  #crowd .caption { min-height: 0; }
+}
+#scene { display: block; width: 100%; height: auto; }
+#scene .land { fill: var(--land); stroke: var(--coast); stroke-width: 1; }
+#scene text { font-family: var(--body); font-size: 13px; font-weight: 600; fill: var(--muted); }
+.caption { margin: 0; max-width: 60ch; min-height: 6.2em; }
+@media (min-width: 560px) { .caption { min-height: 4.7em; } }
+.tally { margin: 0; padding: 0; list-style: none; display: grid; gap: .15rem; font-variant-numeric: tabular-nums; }
+.tally li { display: grid; grid-template-columns: 1.4rem 1fr auto; align-items: center; gap: .5rem; padding: .3rem 0; border-bottom: 1px solid var(--line); }
+.tally li:last-child { border-bottom: 0; }
+.tally svg { width: 1.2rem; height: 1.2rem; display: block; }
+.tally .nm small { color: var(--muted); font-size: .85rem; }
+.tally .ct { font-weight: 700; text-align: right; }
+@media (max-width: 480px) { .tally .nm small { display: block; } }
+.tallyhead { margin: 0; font-weight: 600; }
+#scene .stirnote { font-size: 10.5px; font-weight: 600; font-style: italic; fill: var(--muted); }
+.tile rect { stroke: var(--land); stroke-width: 1.2; }
+.tile .mark { fill: var(--land); stroke: none; }
+details.genes > summary { cursor: pointer; color: var(--muted); font-size: .95rem; text-decoration: underline; width: fit-content; }
+details.genes.early > summary { display: none; }
+details.genes[open]:not(.early) > p { margin-top: .4rem; }
+.verdict { margin: 0; padding: .8rem 1rem; border: 2px solid var(--ink); border-radius: 10px; display: grid; gap: .5rem; }
+.verdict p { margin: 0; max-width: 60ch; }
+.verdict .big { font-weight: 700; font-size: 1.1rem; }
+
+/* sorting game */
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: .45rem; }
+legend { padding: 0; font-weight: 700; margin-bottom: .15rem; }
+.sorts { display: grid; gap: 1.1rem; }
+.seg { display: flex; flex-wrap: wrap; gap: .4rem; }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.seg span { display: inline-block; padding: .42rem .75rem; border-radius: 10px; border: 1px solid var(--ink); font-weight: 600; font-size: .92rem; }
+.seg input:checked + span { background: var(--ink); color: var(--paper); }
+.seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.seg input:disabled, .seg input:disabled + span { cursor: default; }
+.seg label.right span { box-shadow: 0 0 0 3px var(--good); }
+.fb { margin: 0; font-size: .95rem; max-width: 60ch; }
+.fb strong { color: var(--ink); }
+.score { margin: 0; font-weight: 700; }
+
+/* bars */
+.slider { display: grid; gap: .35rem; }
+.slider label { font-weight: 600; }
+.slider .now { font-family: var(--display); font-weight: 700; font-size: 1.25rem; }
+.slider input[type=range] { width: 100%; accent-color: var(--ink); height: 1.6rem; }
+.bars { display: grid; gap: .6rem; }
+.bar-row { display: grid; grid-template-columns: 1fr auto; gap: .2rem .6rem; align-items: baseline; }
+.bar-row .bl { font-weight: 600; }
+.bar-row .bv { font-weight: 700; font-variant-numeric: tabular-nums; }
+.bar-row .bt { grid-column: 1 / -1; height: .85rem; background: var(--grid); border-radius: 4px; position: relative; overflow: hidden; }
+.bar-row .bt::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--surface); }
+.bar-row .bf { display: block; height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; transition: width .45s ease; }
+@media (prefers-reduced-motion: reduce) { .bar-row .bf { transition: none; } }
+.halfnote { font-size: .82rem; color: var(--muted); margin: -.4rem 0 0; text-align: center; }
+.takeaway { margin: 0; max-width: 60ch; }
+
+.prose p, .prose ol, .prose ul { margin: 0 0 .7rem; max-width: 62ch; }
+.prose li { margin-bottom: .4rem; }
+.cant { border: 2px solid var(--ink); }
+.cant ul { margin: 0; padding-left: 1.2rem; display: grid; gap: .6rem; max-width: 62ch; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: .92rem; }
+th, td { text-align: right; padding: .4rem .45rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th:first-child, td:first-child { text-align: left; }
+thead th { font-size: .8rem; color: var(--muted); font-weight: 600; }
+tbody th { font-weight: 400; }
+td .n { color: var(--muted); font-size: .85em; }
+details.card > summary { list-style: none; cursor: pointer; color: var(--ink); font-size: 1.05rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1rem; }
+details.card > summary::-webkit-details-marker { display: none; }
+details.card > summary h2 { display: inline; }
+details.card > summary h2::before { content: ""; display: inline-block; width: .45em; height: .45em; border-right: .14em solid currentColor; border-bottom: .14em solid currentColor; transform: rotate(-45deg); margin: 0 .55em .12em .05em; vertical-align: middle; }
+details.card[open] > summary h2::before { transform: rotate(45deg); }
+details.card > summary .sub { text-decoration: underline; }
+details.card[open] > summary .sub { display: none; }
+details.card { display: block; }
+details.card > * + * { margin-top: 1rem; }
+.notes { font-size: .88rem; color: var(--muted); }
+.notes p { margin: 0 0 .6rem; }
+.notes { min-width: 0; }
+.notes p { overflow-wrap: anywhere; }
+footer { font-size: .85rem; color: var(--muted); }
+details.a11y { font-size: .88rem; color: var(--muted); max-width: 42rem; width: 100%; justify-self: center; }
+details.a11y > summary { cursor: pointer; color: var(--ink); font-weight: 600; width: fit-content; text-decoration: underline; text-underline-offset: 3px; }
+details.a11y[open] > summary { margin-bottom: .5rem; }
+details.a11y p, details.a11y ul { margin: 0 0 .6rem; max-width: 62ch; }
+details.a11y ul { padding-left: 1.2rem; }
+details.a11y li { margin-bottom: .3rem; }
+details.a11y a { color: var(--ink); overflow-wrap: anywhere; }
+.hidden { display: none !important; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">By Gwen Sharp · <a href="https://x.com/gsharpokie">@gsharpokie</a></div>
+    <h1>Who Were the Ancient Britons?</h1>
+    <p class="lede">It depends on when you ask. DNA from ancient skeletons shows that the people living in Britain changed again and again.</p>
+  </header>
+  <main class="wrap-main">
+
+  <section class="card" id="predict" aria-labelledby="predQ">
+    <p class="then">About 10,000 years ago, a man was buried in a cave in southwest England. Archaeologists call him Cheddar Man. His people were hunter-gatherers.</p>
+    <p class="q" id="predQ">Over the next 8,000 years, how many times did newcomers replace about half or more of Britain’s ancestry?</p>
+    <div class="choices" id="predChoices" role="group" aria-labelledby="predQ">
+      <button type="button" data-i="0" aria-pressed="false">Never</button>
+      <button type="button" data-i="1" aria-pressed="false">Once</button>
+      <button type="button" data-i="2" aria-pressed="false">Twice</button>
+      <button type="button" data-i="3" aria-pressed="false">Three times</button>
+    </div>
+    <div class="row" id="predRow"><button type="button" class="primary" id="go" disabled>Watch what happened</button><button type="button" class="linkish" id="skip">Skip the prediction</button></div>
+  </section>
+
+  <section class="card hidden after" id="crowd" aria-labelledby="crowdHead">
+    <h2 id="crowdHead">Watch Britain change</h2>
+    <p class="sub">Newcomers arrive by boat. Once they land, they become tiles in Britain’s gene pool. Each tile stands for 1% of the ancestry of everyone living there, not 1% of the people.</p>
+    <div class="stagehead">
+      <span class="when" id="when"></span>
+      <h3 id="stageTitle"></h3>
+    </div>
+    <div class="stage">
+      <div class="col-left">
+        <div class="scene">
+          <svg id="scene" viewBox="0 0 320 300" role="img" aria-labelledby="crowdSummary" focusable="false">
+            <path class="land" d="M-2,-2 H238 C252,28 240,60 248,95 C256,130 238,160 246,195 C254,230 240,262 250,302 H-2 Z"/>
+            <path class="land" d="M322,-2 H298 C290,40 302,80 294,120 C288,160 300,200 293,240 C289,270 298,285 296,302 H322 Z"/>
+            <text x="12" y="22" id="placeLabel">Britain</text>
+            <text x="312" y="22" text-anchor="end">The continent</text>
+            <g id="figs"></g>
+            <g id="movers"></g>
+            <text x="123" y="290" text-anchor="middle" id="stirNote" class="stirnote" opacity="0">Generations pass, and the ancestry mixes</text>
+          </svg>
+        </div>
+        <div class="row controls">
+          <button type="button" class="step" id="back">← Back</button>
+          <button type="button" class="primary" id="nextBtn">Next arrival →</button>
+          <button type="button" class="step" id="replay">Replay</button>
+        </div>
+        <div class="tallybox">
+          <p class="tallyhead" id="tallyHead"></p>
+          <ul class="tally" id="tally"></ul>
+          <p class="vh" id="crowdSummary" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="capwrap" id="capwrap">
+          <p class="caption" id="caption"></p>
+          <div class="pop hidden" id="bbPop" role="group" aria-label="About Bell Beaker pottery">
+            <button type="button" class="popclose" id="bbClose" aria-label="Close">×</button>
+            <div class="popimgs">
+              <figure><img src="images/beakers-thickthorn-down.jpg" width="440" height="256" alt="Two clay pots with flared rims and bands of cross-hatched decoration, in a museum case."><figcaption>Found in burials in Dorset, England</figcaption></figure>
+              <figure><img src="images/beaker-fuente-olmedo.jpg" width="440" height="389" alt="A dark clay pot with a wide flared rim and bands of zigzag decoration. Part of the rim is broken off."><figcaption>Found in a burial at Fuente-Olmedo, Spain</figcaption></figure>
+            </div>
+            <p>Bell Beaker pots are named for their shape, like an upside-down bell. The style spread across western and central Europe starting around 2750 BCE.</p>
+            <p><a href="https://www.nhm.ac.uk/discover/news/2018/february/the-beaker-people-a-new-population-for-ancient-britain.html">Read more about the Beaker people</a> (Natural History Museum, London).</p>
+            <p class="credit">Photos: Pasicles (left) and Laci3 (right), Wikimedia Commons, public domain.</p>
+          </div>
+        </div>
+        <div class="dna">
+          <h3 id="meterHead">What their DNA shows</h3>
+          <p class="sub" id="barExplain">Each bar below shows the share of people tested whose DNA carried that variant.</p>
+          <div class="bars" id="meters"></div>
+          <p class="sub" id="meterNote"></p>
+          <details class="genes" id="geneExplain" open><summary>What’s a gene variant?</summary>
+            <p class="sub">Genes are instructions in our DNA, and many come in slightly different versions, called variants. A few variants are linked to how people look. Someone with two copies of the blue-eye variant (one from each parent) usually has blue or other light eyes. Someone with neither of the two light-skin variants usually has darker skin, though skin color depends on many genes.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+    <div class="verdict hidden" id="verdict"></div>
+  </section>
+
+  <section class="card cant hidden after" aria-labelledby="cantHead">
+    <h2 id="cantHead">What this can’t show</h2>
+    <ul>
+      <li><strong>Tiles aren’t people.</strong> Each tile represents 1% of DNA. Newcomers and the people already there had children together, so over time most people had ancestors from both.</li>
+      <li><strong>Why earlier groups shrank.</strong> DNA shows whose descendants lived in Britain later. It can’t say whether earlier people were outnumbered, had fewer surviving children, died of disease, or were driven out. Archaeologists warn against assuming invasions.</li>
+      <li><strong>Newcomers were mixes too.</strong> The first farmers’ ancestors had already mixed with hunter-gatherers on the continent, so hunter-gatherer ancestry didn’t vanish.</li>
+      <li><strong>All of Britain.</strong> The third arrival is measured in England and Wales. The same shift doesn’t show up in Scotland. All of these numbers are estimates from a few hundred skeletons.</li>
+      <li><strong>What people looked like.</strong> The bars count gene variants in the people whose remains have been dug up and tested, a few dozen to a few hundred per period. A variant isn’t a guarantee that a person looks a specific way; skin color depends on many genes.</li>
+    </ul>
+  </section>
+
+  <section class="card prose hidden after" aria-labelledby="ponderHead">
+    <h2 id="ponderHead">Things to ponder</h2>
+    <ol>
+      <li>Look at the DNA bars. The gene variants linked to blue eyes, light skin, and milk digestion each arrived and began to spread at a different time. What does that suggest about sorting people into races based on traits?</li>
+      <li>“Replaced” can sound violent, but DNA can’t tell us why earlier groups left fewer descendants. What other explanations can you think of? What evidence would help you decide?</li>
+    </ol>
+  </section>
+
+  <section class="notes prose hidden after" id="sources">
+    <h3>Sources</h3>
+    <p>Brace, Selina, et al. 2019. “Ancient Genomes Indicate Population Replacement in Early Neolithic Britain.” <em>Nature Ecology &amp; Evolution</em> 3(5):765–771. <a href="https://doi.org/10.1038/s41559-019-0871-9">https://doi.org/10.1038/s41559-019-0871-9</a></p>
+    <p>Furholt, Martin. 2018. “Massive Migrations? The Impact of Recent aDNA Studies on Our View of Third Millennium Europe.” <em>European Journal of Archaeology</em> 21(2):159–191. <a href="https://doi.org/10.1017/eaa.2017.43">https://doi.org/10.1017/eaa.2017.43</a></p>
+    <p>Gretzinger, Joscha, et al. 2022. “The Anglo-Saxon Migration and the Formation of the Early English Gene Pool.” <em>Nature</em> 610(7930):112–119. <a href="https://doi.org/10.1038/s41586-022-05247-2">https://doi.org/10.1038/s41586-022-05247-2</a></p>
+    <p>Heyd, Volker. 2017. “Kossinna’s Smile.” <em>Antiquity</em> 91(356):348–359. <a href="https://doi.org/10.15184/aqy.2017.21">https://doi.org/10.15184/aqy.2017.21</a></p>
+    <p>Mallick, Swapan, et al. 2024. “The Allen Ancient DNA Resource (AADR): A Curated Compendium of Ancient Human Genomes.” <em>Scientific Data</em> 11(1):182. <a href="https://doi.org/10.1038/s41597-024-03031-7">https://doi.org/10.1038/s41597-024-03031-7</a></p>
+    <p>Mallick, Swapan and David Reich. 2026. “The Allen Ancient DNA Resource (AADR): A Curated Compendium of Ancient Human Genomes.” Version 66.p1 (released June 8, 2026). Harvard Dataverse. <a href="https://doi.org/10.7910/DVN/FFIDCW">https://doi.org/10.7910/DVN/FFIDCW</a></p>
+    <p>Olalde, Iñigo, et al. 2018. “The Beaker Phenomenon and the Genomic Transformation of Northwest Europe.” <em>Nature</em> 555(7695):190–196. <a href="https://doi.org/10.1038/nature25738">https://doi.org/10.1038/nature25738</a></p>
+    <p>Patterson, Nick, et al. 2022. “Large-Scale Migration into Britain during the Middle to Late Bronze Age.” <em>Nature</em> 601(7894):588–594. <a href="https://doi.org/10.1038/s41586-021-04287-4">https://doi.org/10.1038/s41586-021-04287-4</a></p>
+    <p>How the numbers were made: the crowd follows three published estimates. Farmers replaced nearly all earlier ancestry in Britain (Brace et al. 2019). Beaker-era newcomers replaced about 90% (Olalde et al. 2018). Bronze Age newcomers contributed about half the ancestry of Iron Age England and Wales (Patterson et al. 2022); the page splits the other half between the earlier groups in the same 9-to-1 proportion. The bars were calculated for this page from the AADR’s 1240K data set: people buried in the United Kingdom with a date and a passing quality rating, each counted once. A variant’s percentage is the share of tested people whose sampled DNA read carried it. The variants are rs1426654 (SLC24A5) and rs16891982 (SLC45A2) for light skin, rs12913832 (HERC2, blue eyes), and rs4988235 (LCT, milk digestion). One check against a published result: the LCT variant in Iron Age Britain is 49% here and about 50% in Patterson et al. 2022. Cheddar Man’s variants match the dark skin and blue or green eyes reported by Brace et al. 2019.</p>
+    <p>Photos of Bell Beaker pots (cropped), both released to the public domain (CC0) on Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Thickthorn_Down_bell-beakers.jpg">beakers from Thickthorn Down, Dorset</a>, by Pasicles; <a href="https://commons.wikimedia.org/wiki/File:Vasijas_cer%C3%A1micas_del_ajuar_campaniforme_de_Fuente-Olmedo_-_Museo_de_Valladolid_(8).jpg">beaker from Fuente-Olmedo, Spain</a>, by Laci3.</p>
+    <h3>How to cite this page</h3>
+    <p>Sharp, Gwen. 2026. “Who Were the Ancient Britons?” https://gsharpokie.github.io/ancientbritons/</p>
+    <p>Spot an error? <a href="https://github.com/gsharpokie/ancientbritons/issues/new">Suggest a correction</a> (needs a free GitHub account).</p>
+  </section>
+
+  <details class="a11y" id="accessibility">
+    <summary>Accessibility information</summary>
+    <p>This page aims to meet <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a> Level AA, so it works for people who use screen readers, keyboards, or screen magnification.</p>
+    <ul>
+      <li>All buttons and links can be reached and used with a keyboard, and show a visible outline when selected.</li>
+      <li>The gene pool has a text equivalent: the “Ancestry in Britain” list beside it gives each group’s share at every step.</li>
+      <li>The DNA bars show their percentages as text.</li>
+      <li>The boat animation is skipped for anyone whose device is set to reduce motion.</li>
+      <li>The “Bell Beaker” pop-up opens with a click, a tap, the keyboard, or a mouse hover, and closes with Escape. Its photos have text descriptions.</li>
+      <li>Each group has its own shape as well as its own color, so color isn’t the only way to tell them apart.</li>
+      <li>Text meets WCAG AA color contrast standards in both light and dark mode.</li>
+      <li>The page fits narrow phone screens without sideways scrolling.</li>
+    </ul>
+    <p>I checked it in November 2026 with automated accessibility testing (axe-core) plus keyboard and small-screen checks. It hasn’t yet been tested by people who use screen readers every day, so there may be problems I haven’t caught. If something doesn’t work for you, please <a href="https://github.com/gsharpokie/ancientbritons/issues/new">let me know</a> (needs a free GitHub account).</p>
+  </details>
+
+  </main>
+  <footer>Created by Gwen Sharp (<a href="https://x.com/gsharpokie">@gsharpokie</a>). Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+const NS = "http://www.w3.org/2000/svg";
+const fmt = n => n.toLocaleString("en-US");
+const pct = v => Math.round(v * 100) + "%";
+
+/* ---------- prediction ---------- */
+const GUESS = ["never", "once", "twice", "three times"];
+let guess = null;
+const choices = [...document.querySelectorAll("#predChoices button")];
+choices.forEach(b => b.addEventListener("click", () => {
+  guess = +b.dataset.i;
+  choices.forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+  $("#go").disabled = false;
+}));
+function reveal(scroll) {
+  document.querySelectorAll(".after").forEach(el => el.classList.remove("hidden"));
+  choices.forEach(c => { c.disabled = true; });
+  $("#predRow").classList.add("hidden");
+  if (scroll) $("#crowd").scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
+}
+$("#go").addEventListener("click", () => reveal(true));
+$("#skip").addEventListener("click", () => { guess = null; choices.forEach(c => c.setAttribute("aria-pressed", "false")); reveal(true); });
+
+/* ---------- crowd ---------- */
+const WAVES = [
+  { name: "Hunter-gatherer DNA", note: "already there", css: "--w0", body: '<path d="M0,-3 L6.3,9 H-6.3 Z"/>' },
+  { name: "First-farmer DNA", note: "from about 4000 BCE", css: "--w1", body: '<rect x="-5.4" y="-2.6" width="10.8" height="11.6" rx="1.8"/>' },
+  { name: "Beaker-era newcomer DNA", note: "from about 2450 BCE", css: "--w2", body: '<circle cx="0" cy="3.4" r="6"/>' },
+  { name: "Bronze Age newcomer DNA", note: "around 1000 BCE", css: "--w3", body: '<path d="M-6.3,-2.6 H6.3 L0,9.4 Z"/>' }
+];
+const NOT_YET = "not here yet";
+// share of tested people in Britain whose DNA carried each gene variant, by period (from the AADR; see Sources)
+const METERS = ["Main light-skin variant", "A second light-skin variant", "Blue-eye variant", "Milk-digestion variant"];
+const TRAITS = [
+  null,
+  { v: [93, 16, 35, 0], note: "People who lived 4000 to 3000 BCE. DNA from up to 81 people." },
+  { v: [100, 65, 59, 5], note: "People who lived 2450 to 1500 BCE. DNA from up to 66 people." },
+  { v: [100, 85, 47, 49], note: "People who lived 750 BCE to 43 CE. DNA from up to 275 people." }
+];
+const STAGES = [
+  { when: "About 8000 BCE", title: "Hunter-gatherers", place: "Britain", show: ["100%", NOT_YET, NOT_YET, NOT_YET],
+    text: "Britain’s people are hunter-gatherers, like Cheddar Man. Their DNA is similar to hunter-gatherers across western Europe.", src: "Brace et al. 2019" },
+  { when: "About 4000 BCE", title: "Farmers arrive", place: "Britain", show: ["little, if any", "nearly 100%", NOT_YET, NOT_YET],
+    text: "Farmers cross over from the European continent. Their ancestors spread along the Mediterranean from the Aegean Sea, between today’s Greece and Turkey. There’s very little mixing with the hunter-gatherers already in Britain; the farmers largely replace the earlier inhabitants.", src: "Brace et al. 2019" },
+  { when: "About 2450 BCE", title: "Beaker-era newcomers arrive", place: "Britain", show: ["little, if any", "about 10%", "about 90%", NOT_YET],
+    text: "Newcomers bring a new style of pottery, called <button type=\"button\" class=\"term\" id=\"bbTerm\" aria-expanded=\"false\" aria-controls=\"bbPop\">Bell Beaker<span class=\"i\" aria-hidden=\"true\">ⓘ</span><span class=\"vh\"> (see photos)</span></button>, and ancestry from herders of the eastern European grasslands (in modern-day Ukraine and southern Russia). Within a few hundred years, about 90% of Britain’s ancestry comes from them.", src: "Olalde et al. 2018" },
+  { when: "About 1000 BCE", title: "More newcomers arrive", place: "England and Wales", show: ["little, if any", "about 5%", "about 45%", "about 50%"],
+    text: "More newcomers arrive over a few centuries. Their DNA is most like that of ancient people in France. By the Iron Age, about half the ancestry in England and Wales comes from them.", src: "Patterson et al. 2022" }
+];
+// The gene pool: DISP[s][cell] = which group each of the 100 tiles belongs to at stage s, by grid position.
+// Each arrival replaces some tiles (PRE), then the tiles are stirred into new positions (DISP). Fixed seed, so it
+// looks the same every time.
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function shuffled(arr, r) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const R = rng(11);
+const idx = [...Array(100).keys()];
+const REPLACE = [null, [[0, 1, 100]], [[1, 2, 90]], [[2, 3, 45], [1, 3, 5]]];   // [from group, to group, how many]
+const DISP = [idx.map(() => 0)], PRE = [null], PERM = [null];
+for (let s = 1; s < 4; s++) {
+  const pre = DISP[s - 1].slice();
+  for (const [from, to, n] of REPLACE[s]) shuffled(idx.filter(i => pre[i] === from && DISP[s - 1][i] === from), R).slice(0, n).forEach(i => { pre[i] = to; });
+  const perm = shuffled(idx, R), disp = Array(100);
+  idx.forEach(i => { disp[perm[i]] = pre[i]; });
+  PRE.push(pre); PERM.push(perm); DISP.push(disp);
+}
+const CELLS = idx.map(i => ({ x: 27 + 22 * (i % 10), y: 54 + 22 * Math.floor(i / 10) }));
+const HEAD = '<circle cx="0" cy="-7" r="3.3"/>';
+const MARK = [
+  '<path class="mark" d="M0,-5.2 L5.4,4.2 H-5.4 Z"/>',
+  '<rect class="mark" x="-4.4" y="-4.4" width="8.8" height="8.8" rx="1"/>',
+  '<circle class="mark" cx="0" cy="0" r="4.8"/>',
+  '<path class="mark" d="M-5.4,-4.2 H5.4 L0,5.2 Z"/>'
+];
+const COAST = 246, START_X = 306, DUR = 1150, SPREAD = 1500, STIR = 1100;
+function person(w, x, y) {
+  const g = document.createElementNS(NS, "g");
+  g.setAttribute("transform", `translate(${x},${y})`);
+  g.setAttribute("fill", `var(${WAVES[w].css})`);
+  g.innerHTML = '<path class="boat" d="M-9,9.5 Q0,16 9,9.5 Z" fill="var(--boat)"/>' + HEAD + WAVES[w].body;
+  return g;
+}
+function tile(w, x, y, sc) {
+  const g = document.createElementNS(NS, "g");
+  g.setAttribute("class", "tile");
+  g.setAttribute("transform", `translate(${x},${y}) scale(${sc ?? 1})`);
+  g.innerHTML = `<rect x="-9.5" y="-9.5" width="19" height="19" rx="3.5" fill="var(${WAVES[w].css})"/>${MARK[w]}`;
+  return g;
+}
+const crowd = { stage: 0, token: 0 };
+// "Bell Beaker" pop-up: opens on click, tap, Enter, or mouse hover; closes with Escape, the × button, or a click elsewhere
+const pop = { pinned: false, timer: null };
+function openPop(pin) {
+  clearTimeout(pop.timer); if (pin) pop.pinned = true;
+  $("#bbPop").classList.remove("hidden"); const t = $("#bbTerm"); if (t) t.setAttribute("aria-expanded", "true");
+}
+function closePop(refocus) {
+  clearTimeout(pop.timer); pop.pinned = false;
+  const wasOpen = !$("#bbPop").classList.contains("hidden");
+  $("#bbPop").classList.add("hidden"); const t = $("#bbTerm"); if (t) { t.setAttribute("aria-expanded", "false"); if (refocus && wasOpen) t.focus(); }
+}
+$("#capwrap").addEventListener("click", e => {
+  if (e.target.closest("#bbClose")) { closePop(true); return; }
+  if (!e.target.closest("#bbTerm")) return;
+  if (!$("#bbPop").classList.contains("hidden") && pop.pinned) closePop(false); else openPop(true);
+});
+// hover: any mouse or pen pointer opens it, whatever the device says its main input is (touch uses the click above)
+$("#capwrap").addEventListener("pointerover", e => { if (e.pointerType === "touch") return; if (e.target.closest("#bbTerm")) openPop(false); else if (e.target.closest("#bbPop")) clearTimeout(pop.timer); });
+$("#capwrap").addEventListener("pointerleave", e => { if (e.pointerType !== "touch" && !pop.pinned) pop.timer = setTimeout(() => closePop(false), 350); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#bbPop").classList.contains("hidden")) closePop($("#capwrap").contains(document.activeElement)); });
+document.addEventListener("click", e => { if (!e.target.closest("#capwrap")) closePop(false); });
+const ease = k => k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+function drawStatic(s) {
+  $("#movers").textContent = ""; $("#stirNote").setAttribute("opacity", 0);
+  const g = $("#figs"); g.textContent = "";
+  DISP[s].forEach((w, i) => g.appendChild(tile(w, CELLS[i].x, CELLS[i].y)));
+}
+function animate(s) {
+  drawStatic(s - 1);
+  const token = crowd.token, olds = [...$("#figs").children], movers = [], landed = [];
+  // tiles that stay keep their element; replaced cells get a new tile that pops in when its person lands
+  const tiles = olds.slice();
+  PRE[s].forEach((w, i) => {
+    if (DISP[s - 1][i] === w) return;
+    const sx = START_X + Math.random() * 8, sy = CELLS[i].y + (Math.random() - .5) * 12;
+    const p = person(w, sx, sy); p.style.opacity = 0; $("#movers").appendChild(p);
+    const nt = tile(w, CELLS[i].x, CELLS[i].y, 0.01); nt.style.opacity = 0; $("#figs").appendChild(nt);
+    tiles[i] = nt;
+    movers.push({ p, nt, boat: p.querySelector(".boat"), old: olds[i], sx, sy, tx: CELLS[i].x, ty: CELLS[i].y, delay: Math.random() * SPREAD });
+  });
+  const arriveEnd = SPREAD + DUR + 250;
+  const stirDelay = idx.map(() => Math.random() * 280), lift = idx.map(() => (Math.random() - .5) * 26);
+  const t0 = performance.now();
+  function frame(now) {
+    if (token !== crowd.token) return;
+    const t = now - t0;
+    if (t < arriveEnd) {
+      for (const m of movers) {
+        const k = Math.max(0, Math.min(1, (t - m.delay) / DUR)), e = ease(k);
+        const x = m.sx + (m.tx - m.sx) * e, y = m.sy + (m.ty - m.sy) * e;
+        const bob = k >= 1 ? 0 : (x > COAST ? Math.sin(t / 130 + m.delay) * 1.6 : -Math.abs(Math.sin(t / 95 + m.delay)) * 2);
+        m.p.setAttribute("transform", `translate(${x.toFixed(1)},${(y + bob).toFixed(1)})`);
+        m.boat.style.opacity = x > COAST ? 1 : Math.max(0, 1 - (COAST - x) / 12);
+        const land = Math.max(0, Math.min(1, (k - .82) / .18));        // last part of the trip: person becomes a tile
+        m.p.style.opacity = Math.min(1, k * 12) * (1 - land);
+        m.old.style.opacity = 1 - land;
+        const pop = land < 1 ? land * 1.18 : 1;
+        m.nt.style.opacity = land; m.nt.setAttribute("transform", `translate(${m.tx},${m.ty}) scale(${Math.max(.01, pop).toFixed(3)})`);
+      }
+      requestAnimationFrame(frame); return;
+    }
+    // stir: every tile moves from its PRE cell to its new cell, along a gentle curve
+    if (!landed.length) { movers.forEach(m => { m.p.remove(); m.old.remove(); }); landed.push(1); }
+    const ts = t - arriveEnd;
+    $("#stirNote").setAttribute("opacity", Math.min(1, ts / 250, Math.max(0, (STIR + 700 - ts) / 300)).toFixed(2));
+    let done = true;
+    tiles.forEach((el, i) => {
+      const k = Math.max(0, Math.min(1, (ts - stirDelay[i]) / STIR)); if (k < 1) done = false;
+      const e = ease(k), a = CELLS[i], b = CELLS[PERM[s][i]];
+      const x = a.x + (b.x - a.x) * e + Math.sin(Math.PI * e) * lift[i], y = a.y + (b.y - a.y) * e - Math.sin(Math.PI * e) * 10;
+      el.setAttribute("transform", `translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${(Math.sin(Math.PI * e) * 25).toFixed(1)})`);
+    });
+    if (done && ts > STIR + 1000) drawStatic(s); else requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+function glyphSvg(w) { return `<svg viewBox="-11 -11 22 22" aria-hidden="true"><g class="tile"><rect x="-9.5" y="-9.5" width="19" height="19" rx="3.5" fill="var(${WAVES[w].css})"/>${MARK[w]}</g></svg>`; }
+function setStage(s, play) {
+  crowd.stage = s; crowd.token++;
+  const st = STAGES[s];
+  $("#when").textContent = st.when;
+  $("#stageTitle").textContent = st.title;
+  closePop(false);
+  $("#caption").innerHTML = `${st.text} <span class="sub">(${st.src})</span>`;
+  $("#placeLabel").textContent = st.place;
+  $("#tallyHead").textContent = `Ancestry in ${st.place}`;
+  // only groups that have arrived are listed, so the list doesn't give away how many arrivals are coming
+  const here = WAVES.map((w, i) => ({ w, i })).filter(o => st.show[o.i] !== NOT_YET);
+  $("#tally").innerHTML = here.map(o => `<li>${glyphSvg(o.i)}<span class="nm">${o.w.name} <small>(${o.w.note})</small></span><span class="ct">${st.show[o.i]}</span></li>`).join("");
+  $("#crowdSummary").textContent = `${st.when}, ${st.place}. ` + here.map(o => `${o.w.name}: ${st.show[o.i]}`).join("; ") + ".";
+  $("#back").disabled = s === 0;
+  $("#nextBtn").disabled = s === STAGES.length - 1;
+  $("#replay").disabled = s === 0 || reduce.matches;
+  const tr = TRAITS[s];
+  $("#meters").classList.toggle("hidden", !tr);
+  $("#barExplain").classList.toggle("hidden", !tr);
+  // full explainer on the first two steps; after that, folded into a "What's a gene variant?" link
+  const ge = $("#geneExplain"), early = s <= 1;
+  if (early) ge.open = true; else if (ge.classList.contains("early")) ge.open = false;
+  ge.classList.toggle("early", early);
+  if (tr) METERS.forEach((_, i) => { $("#mv" + i).textContent = tr.v[i] + "%"; $("#mf" + i).style.width = tr.v[i] + "%"; });
+  $("#meterNote").textContent = tr ? tr.note : "Too few people from this far back in history have been tested to give percentages. Cheddar Man had the blue-eye gene variant and neither of the light-skin variants. That means he most likely had blue or green eyes and dark skin.";
+  if (s === STAGES.length - 1) {
+    const lead = guess === null ? "" : (guess === 3 ? "You got it. " : `You guessed ${GUESS[guess]}. `);
+    $("#verdict").innerHTML = `<p class="big">${lead}It happened three times in 8,000 years.</p><p>And it didn’t stop. After Roman rule ended, large numbers of people crossed the North Sea from what’s now Germany and Denmark. In early medieval eastern England, up to 76% of residents’ ancestry came from them. <span class="sub">(Gretzinger et al. 2022)</span></p>`;
+    $("#verdict").classList.remove("hidden");
+  }
+  if (play && s > 0 && !reduce.matches) animate(s); else drawStatic(s);
+}
+$("#nextBtn").addEventListener("click", () => setStage(Math.min(STAGES.length - 1, crowd.stage + 1), true));
+$("#back").addEventListener("click", () => setStage(Math.max(0, crowd.stage - 1), false));
+$("#replay").addEventListener("click", () => setStage(crowd.stage, true));
+$("#meters").innerHTML = METERS.map((m, i) => `<div class="bar-row"><span class="bl">${m}</span><span class="bv" id="mv${i}"></span><span class="bt" aria-hidden="true"><span class="bf" id="mf${i}"></span></span></div>`).join("");
+setStage(0, false);
+
+if (location.hash === "#crowd") reveal(true);
+</script>
+</body>
+</html>
